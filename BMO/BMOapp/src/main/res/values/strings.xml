@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">BMO</string>
+    <string name="name">Nombre</string>
+    <string name="user">Usuario</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="photoBitmap">Foto</string>
+    <string name="log_up">Registrar</string>
+    <string name="keep_session">Mantener Sesion</string>
+    <string name="log_in">Ingresar</string>
+    <string name="logupS">Registro exitoso</string>
+    <string name="action_settings">Preferencias</string>
+
+
+    <string name="title_section1">Perfíl</string>
+    <string name="title_section2">Monitores</string>
+    <string name="title_section3">Asesorias</string>
+    <string name="title_section4">Contacto</string>
+    <string name="log_up_at_inst">Registrar como Monitor</string>
+    <string name="log_up_at_user">Registrar como usuario</string>
+
+    <string name="show_all_tutors">Mostrar todos los monitores disponibles</string>
+    <string name="show_subjects">Buscar asesorias según el curso</string>
+    <string name="tutors">Monitores</string>
+    <string name="subjects">Materias</string>
+    <string name="near_tutors">Monitores Cercanos</string>
+    <string name="find_tutors">Buscar monitores cercanos</string>
+    <string name="next_tutor">Programar Monitoria</string>
+    <string name="next_weeks">Reserva monitoria para proximas semanas</string>
+    <string name="action_logout">Cerrar Sesion</string>
+    <string name="action_about">Acerca de</string>
+    <string name="title_activity_config">ConfigActivity</string>
+    <string name="passwordSettingsDescription">Cambiar pa contraseña</string>
+    <string name="emailSettingsDescription">Cambiar el email</string>
+    <string name="photoSettingsDescription">Cambiar la foto</string>
+    <string name="userSettingsDescription">Cambia el usuario</string>
+    <string name="nameSettingsDescription">Cambia el nombre</string>
+</resources>
