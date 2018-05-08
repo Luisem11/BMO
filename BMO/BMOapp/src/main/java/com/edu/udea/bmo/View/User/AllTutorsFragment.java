@@ -28,8 +28,6 @@ public class AllTutorsFragment extends Fragment {
     private TutorsCursorAdapter mTutorsAdapter;
 
 
-
-
     public AllTutorsFragment() {
         // Required empty public constructor
     }
@@ -62,7 +60,6 @@ public class AllTutorsFragment extends Fragment {
         });
 
 
-
         // Instancia de helper
         mDbHelper = new DbHelper(getActivity());
 
@@ -75,7 +72,6 @@ public class AllTutorsFragment extends Fragment {
     private void loadTutors() {
         new TutorsLoadTask().execute();
     }
-
 
 
     private void showDetailScreen(String tutorId) {

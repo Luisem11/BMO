@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.edu.udea.bmo.Controller.ImageCodeClass;
 import com.edu.udea.bmo.R;
 
 
@@ -23,6 +24,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL("CREATE TABLE " + StatusContract.TABLE_USER + " ("
                 + StatusContract.Column_User.MAIL + " TEXT  PRIMARY KEY NOT NULL,"
                 + StatusContract.Column_User.NAME + " TEXT NOT NULL,"
@@ -49,37 +51,64 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE " + StatusContract.TABLE_SUBJECT + " ("
                 + StatusContract.Column_Subject.ID + " INTEGER PRIMARY KEY,"
-                + StatusContract.Column_Subject.NAME + " TEXT NOT NULL )" );
+                + StatusContract.Column_Subject.NAME + " TEXT NOT NULL )");
 
         db.execSQL("CREATE TABLE " + StatusContract.TABLE_TUTOR_SUBJECT + " ("
                 + StatusContract.Column_Tutor.MAIL + " TEXT NOT NULL, "
                 + StatusContract.Column_Subject.ID + " INTEGER NOT NULL," +
                 " CONSTRAINT PK_INT_SUB PRIMARY KEY ( " + StatusContract.Column_Subject.ID +
-                " , " + StatusContract.Column_Tutor.MAIL +" ))" );
+                " , " + StatusContract.Column_Tutor.MAIL + " ))");
 
-        db.execSQL("CREATE TABLE " + StatusContract.TABLE_CHAT + " ("
-                + StatusContract.Column_Chat.USER + " TEXT NOT NULL, "
-                + StatusContract.Column_Chat.TUTOR + " TEXT NOT NULL, "
-                + StatusContract.Column_Chat.MSG + " TEXT NOT NULL, "
-                + StatusContract.Column_Chat.ORDER + " INTEGER NOT NULL, "
-                + StatusContract.Column_Chat.SENDBY + " TEXT NOT NULL, "
-                + StatusContract.Column_Chat.VIEWD + " TEXT NOT NULL, "
-                + " CONSTRAINT PK_CHAT PRIMARY KEY ( " + StatusContract.Column_Chat.USER +
-                " , " + StatusContract.Column_Chat.TUTOR +
-                " , " + StatusContract.Column_Chat.ORDER +" ))" );
+        db.execSQL("CREATE TABLE " + StatusContract.TABLE_PROGRAM + " ("
+                + StatusContract.Column_Tutor.ID + " INTEGER  PRIMARY KEY AUTOINCREMENT,"
+                + StatusContract.Column_Program.TUTOR + " TEXT NOT NULL, "
+                + StatusContract.Column_Program.SUBJECT + " TEXT NOT NULL, "
+                + StatusContract.Column_Program.SCHEDULE + " INTEGER NOT NULL)");
 
 
+        Bitmap pic = BitmapFactory.decodeResource(c.getResources(), R.drawable.esq);
+        String pict = ImageCodeClass.encodeToBase64(pic);
 
-
-        Bitmap pic = BitmapFactory.decodeResource(c.getResources(), R.drawable.ic_camera);
-        String pict= "1234";
-
-        UserStructure user = new UserStructure("Pedro Perez", "pe", "1", "pedroperez@aaaa.com", pict, "UdeA");
+        UserStructure user = new UserStructure("Maria Fernanda Esquivel", "esquivel", "peru", "esquivel@aaaa.com", pict, "Universidad Nacional");
         db.insert(StatusContract.TABLE_USER, null, user.toContentValues());
+
+        pic = BitmapFactory.decodeResource(c.getResources(), R.drawable.hombre);
+        pict = ImageCodeClass.encodeToBase64(pic);
+
+        user = new UserStructure("Pedro Perez", "pe", "1", "pedroperez@aaaa.com", pict, "UdeA");
+        db.insert(StatusContract.TABLE_USER, null, user.toContentValues());
+
+        //Add Tutor
+
+        pic = BitmapFactory.decodeResource(c.getResources(), R.drawable.hombre);
+        pict = ImageCodeClass.encodeToBase64(pic);
 
         TutorStructure Tutor = new TutorStructure("Juan Perez", "ju", "1", "juanperez@aaaa.com", pict, "UdeA");
         db.insert(StatusContract.TABLE_TUTOR, null, Tutor.toContentValues());
 
+        pic = BitmapFactory.decodeResource(c.getResources(), R.drawable.obrero);
+        pict = ImageCodeClass.encodeToBase64(pic);
+
+        Tutor = new TutorStructure("Sara Martinez", "sm", "1", "sara@aaaa.com", pict, "UdeM");
+        db.insert(StatusContract.TABLE_TUTOR, null, Tutor.toContentValues());
+
+        pic = BitmapFactory.decodeResource(c.getResources(), R.drawable.hombre);
+        pict = ImageCodeClass.encodeToBase64(pic);
+
+        Tutor = new TutorStructure("Pedro López", "pl", "1", "pedro@aaaa.com", pict, "UdeA");
+        db.insert(StatusContract.TABLE_TUTOR, null, Tutor.toContentValues());
+
+        pic = BitmapFactory.decodeResource(c.getResources(), R.drawable.esq);
+        pict = ImageCodeClass.encodeToBase64(pic);
+
+        Tutor = new TutorStructure("Paula Mesa", "pm", "1", "paulamesa@aaaa.com", pict, "Eafit");
+        db.insert(StatusContract.TABLE_TUTOR, null, Tutor.toContentValues());
+
+        pic = BitmapFactory.decodeResource(c.getResources(), R.drawable.hom);
+        pict = ImageCodeClass.encodeToBase64(pic);
+
+        Tutor = new TutorStructure("Frank Rivera", "", "fr", "frank@aaaa.com", pict, "ITM");
+        db.insert(StatusContract.TABLE_TUTOR, null, Tutor.toContentValues());
 
         //Insert Subjects
 
@@ -97,6 +126,34 @@ public class DbHelper extends SQLiteOpenHelper {
         values.put(StatusContract.Column_Subject.NAME, "Física");
         values.put(StatusContract.Column_Subject.ID, 3);
         db.insert(StatusContract.TABLE_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Subject.NAME, "Cálculo");
+        values.put(StatusContract.Column_Subject.ID, 4);
+        db.insert(StatusContract.TABLE_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Subject.NAME, "Lengua Castellana");
+        values.put(StatusContract.Column_Subject.ID, 5);
+        db.insert(StatusContract.TABLE_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Subject.NAME, "Inglés");
+        values.put(StatusContract.Column_Subject.ID, 6);
+        db.insert(StatusContract.TABLE_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Subject.NAME, "Geometría");
+        values.put(StatusContract.Column_Subject.ID, 7);
+        db.insert(StatusContract.TABLE_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Subject.NAME, "Astronomía");
+        values.put(StatusContract.Column_Subject.ID, 8);
+        db.insert(StatusContract.TABLE_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Subject.NAME, "Biología");
+        values.put(StatusContract.Column_Subject.ID, 9);
+        db.insert(StatusContract.TABLE_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Subject.NAME, "Geología");
+        values.put(StatusContract.Column_Subject.ID, 10);
+        db.insert(StatusContract.TABLE_SUBJECT, null, values);
 
 
         //Associate Subjects
@@ -112,6 +169,52 @@ public class DbHelper extends SQLiteOpenHelper {
         values = new ContentValues();
         values.put(StatusContract.Column_Tutor.MAIL, "juanperez@aaaa.com");
         values.put(StatusContract.Column_Subject.ID, 2);
+        db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
+
+        values = new ContentValues();
+        values.put(StatusContract.Column_Tutor.MAIL, "sara@aaaa.com");
+        values.put(StatusContract.Column_Subject.ID, 1);
+        db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Tutor.MAIL, "sara@aaaa.com");
+        values.put(StatusContract.Column_Subject.ID, 2);
+        db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Tutor.MAIL, "sara@aaaa.com");
+        values.put(StatusContract.Column_Subject.ID, 4);
+        db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Tutor.MAIL, "sara@aaaa.com");
+        values.put(StatusContract.Column_Subject.ID, 6);
+        db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
+
+        values = new ContentValues();
+        values.put(StatusContract.Column_Tutor.MAIL, "pedro@aaaa.com");
+        values.put(StatusContract.Column_Subject.ID, 6);
+        db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Tutor.MAIL, "pedro@aaaa.com");
+        values.put(StatusContract.Column_Subject.ID, 10);
+        db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Tutor.MAIL, "pedro@aaaa.com");
+        values.put(StatusContract.Column_Subject.ID, 9);
+        db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
+        values = new ContentValues();
+        values.put(StatusContract.Column_Tutor.MAIL, "paulamesa@aaaa.com");
+        values.put(StatusContract.Column_Subject.ID, 4);
+        db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
+        values.put(StatusContract.Column_Tutor.MAIL, "paulamesa@aaaa.com");
+        values.put(StatusContract.Column_Subject.ID, 5);
+        db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
+        values.put(StatusContract.Column_Tutor.MAIL, "paulamesa@aaaa.com");
+        values.put(StatusContract.Column_Subject.ID, 7);
+        db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
+        values.put(StatusContract.Column_Tutor.MAIL, "frank@aaaa.com");
+        values.put(StatusContract.Column_Subject.ID, 4);
+        db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
+        values.put(StatusContract.Column_Tutor.MAIL, "frank@aaaa.com");
+        values.put(StatusContract.Column_Subject.ID, 8);
         db.insert(StatusContract.TABLE_TUTOR_SUBJECT, null, values);
     }
 
@@ -153,7 +256,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return c;
     }
 
-    public Cursor getSubjectFromTutorMail(String mail){
+    public Cursor getSubjectFromTutorMail(String mail) {
 
         return getReadableDatabase().query(
                 StatusContract.TABLE_TUTOR_SUBJECT
@@ -162,12 +265,37 @@ public class DbHelper extends SQLiteOpenHelper {
                         + StatusContract.Column_Subject.ID + "="
                         + StatusContract.TABLE_SUBJECT + "."
                         + StatusContract.Column_Subject.ID,
-                new String[] {StatusContract.Column_Subject.NAME},
+                new String[]{StatusContract.Column_Subject.NAME},
                 StatusContract.Column_Tutor.MAIL + " LIKE ?",
                 new String[]{mail},
                 null,
                 null,
                 null);
 
+    }
+
+    public Cursor getAllProgram() {
+
+        return getReadableDatabase()
+                .query(
+                        StatusContract.TABLE_PROGRAM,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null);
+    }
+
+    public Cursor getAllChats() {
+        Cursor c = getReadableDatabase().query(
+                StatusContract.TABLE_TUTOR,
+                null,
+                StatusContract.Column_Tutor.MAIL + " LIKE  ?",
+                new String[]{"P%"},
+                null,
+                null,
+                null);
+        return c;
     }
 }

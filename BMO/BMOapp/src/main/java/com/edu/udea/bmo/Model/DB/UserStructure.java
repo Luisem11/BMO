@@ -30,7 +30,7 @@ public class UserStructure {
         sesion = cursor.getString(cursor.getColumnIndex(StatusContract.Column_User.SESSION));
         state = cursor.getString(cursor.getColumnIndex(StatusContract.Column_User.STATE));
     }
-    
+
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
         values.put(StatusContract.Column_User.USER, user);
@@ -44,45 +44,44 @@ public class UserStructure {
         return values;
     }
 
+    public String getName() {
+        return name;
+    }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getUser() {
         return user;
     }
 
+    public void setUser(String user) {
+        this.user = user;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getMail() {
         return mail;
     }
 
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
     public String getPicture() {
         return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public String getState() {

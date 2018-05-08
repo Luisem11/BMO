@@ -2,10 +2,6 @@ package com.edu.udea.bmo.Controller;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +24,7 @@ public class TutorsCursorAdapter extends CursorAdapter {
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        return inflater.inflate(R.layout.list_item_tutor, viewGroup, false);
+        return inflater.inflate(R.layout.list_item_chat, viewGroup, false);
     }
 
     @Override
@@ -36,13 +32,17 @@ public class TutorsCursorAdapter extends CursorAdapter {
 
         // Referencias UI.
         TextView nameText = (TextView) view.findViewById(R.id.tv_name);
-        final ImageView avatarImage = (ImageView) view.findViewById(R.id.iv_avatar);
+        ImageView avatarImage = (ImageView) view.findViewById(R.id.iv_avatar);
 
         // Get valores.
         String name = cursor.getString(cursor.getColumnIndex(StatusContract.Column_Tutor.NAME));
 
+        String picture = cursor.getString(cursor.getColumnIndex(StatusContract.Column_Tutor.PICTURE));
+
+
         // Setup.
         nameText.setText(name);
+        avatarImage.setImageBitmap(ImageCodeClass.decodeCircular(picture));
 
     }
 

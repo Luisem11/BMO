@@ -1,6 +1,7 @@
 package com.edu.udea.bmo.View.User;
 
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,7 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.edu.udea.bmo.Controller.ImageCodeClass;
 import com.edu.udea.bmo.Model.DB.DbHelper;
+import com.edu.udea.bmo.Model.DB.StatusContract;
 import com.edu.udea.bmo.Model.DB.TutorStructure;
 import com.edu.udea.bmo.R;
 
@@ -27,18 +30,16 @@ public class TutorDetailFragment extends Fragment {
     private static final String ARG_TUTOR_ID = "tutorId";
 
 
-    private String mTutorMail;
+    private String mTutorMail, image;
 
     private CollapsingToolbarLayout mCollapsingView;
     private ImageView mAvatar;
     private TextView mEmail;
     private TextView mSubject;
-    private TextView mInstitution;
+    private TextView mInstitution, mName;
     private String subjects;
 
     private DbHelper mTutorsDbHelper;
-
-
 
 
     public TutorDetailFragment() {
@@ -89,10 +90,18 @@ public class TutorDetailFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        Intent intent = new Intent(getContext(), ChatActivity.class);
+        intent.putExtra(StatusContract.Column_Tutor.NAME, mCollapsingView.getTitle());
+        //intent.putExtra(StatusContract.Column_Tutor.PICTURE, image );
+        startActivity(intent);
+
+
         return super.onOptionsItemSelected(item);
     }
 
     private void showTutor(TutorStructure tutor, String subject) {
+        image = tutor.getPicture();
+        mAvatar.setImageBitmap(ImageCodeClass.decodeCircular(tutor.getPicture()));
         mCollapsingView.setTitle(tutor.getName());
         mEmail.setText(tutor.getMail());
         mSubject.setText(subject);
@@ -106,7 +115,6 @@ public class TutorDetailFragment extends Fragment {
     }
 
 
-
     private class GetTutorByIdTask extends AsyncTask<Void, Void, Cursor> {
 
         @Override
@@ -114,8 +122,8 @@ public class TutorDetailFragment extends Fragment {
 
             Cursor c = mTutorsDbHelper.getSubjectFromTutorMail(mTutorMail);
             StringBuilder stringBuilder = new StringBuilder();
-            for (boolean b = c.moveToFirst(); b; b = c.moveToNext()){
-                stringBuilder.append( c.getString(0) + " " );
+            for (boolean b = c.moveToFirst(); b; b = c.moveToNext()) {
+                stringBuilder.append(c.getString(0) + " ");
             }
             subjects = new String(stringBuilder);
 
@@ -132,7 +140,6 @@ public class TutorDetailFragment extends Fragment {
         }
 
     }
-
 
 
 }

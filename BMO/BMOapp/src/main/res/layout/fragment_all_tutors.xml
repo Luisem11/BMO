@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     tools:context="com.edu.udea.bmo.View.User.AllTutorsFragment">
 
+
+
     <ListView
         android:id="@+id/tutors_list"
         android:layout_width="match_parent"

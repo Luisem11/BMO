@@ -1,7 +1,7 @@
 package com.edu.udea.bmo.View.Tutor;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.edu.udea.bmo.R;
 

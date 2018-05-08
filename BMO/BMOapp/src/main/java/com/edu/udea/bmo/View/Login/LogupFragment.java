@@ -32,7 +32,6 @@ public class LogupFragment extends Fragment implements View.OnClickListener {
     private Bitmap photoBitmap = null;
 
 
-
     public LogupFragment() {
         // Required empty public constructor
     }
@@ -69,7 +68,7 @@ public class LogupFragment extends Fragment implements View.OnClickListener {
         institution = editTextInstitution.getText().toString();
 
 
-        if (name.equals("") || user.equals("") || mail.equals("") ||password.equals("")|| photoBitmap ==null) {
+        if (name.equals("") || user.equals("") || mail.equals("") || password.equals("") || photoBitmap == null) {
             Toast.makeText(getContext(), "Falta Información", Toast.LENGTH_SHORT).show();
         } else {
             photo = ImageCodeClass.encodeToBase64(photoBitmap);
@@ -80,29 +79,29 @@ public class LogupFragment extends Fragment implements View.OnClickListener {
             String query3 = "SELECT " + StatusContract.Column_Tutor.USER + " FROM " + StatusContract.TABLE_TUTOR + " WHERE " + StatusContract.Column_Tutor.USER + " = '" + user + "'";
             String query4 = "SELECT " + StatusContract.Column_Tutor.MAIL + " FROM " + StatusContract.TABLE_TUTOR + " WHERE " + StatusContract.Column_Tutor.MAIL + " = '" + mail + "'";
             Cursor c1 = db.rawQuery(query1, null);
-            Cursor c2 = db.rawQuery(query2,null);
+            Cursor c2 = db.rawQuery(query2, null);
             Cursor c3 = db.rawQuery(query1, null);
-            Cursor c4 = db.rawQuery(query2,null);
+            Cursor c4 = db.rawQuery(query2, null);
 
 
-            if (c1.getCount()!=0||c2.getCount()!=0||c3.getCount()!=0||c4.getCount()!=0) {
-                if((c1.getCount()!=0&&c2.getCount()!=0)||(c3.getCount()!=0&&c4.getCount()!=0)){
-                    Toast.makeText(getContext(),"El correo y el usuario están en uso",Toast.LENGTH_SHORT).show();
-                }else{
-                    if(c1.getCount()!=0||c3.getCount()!=0){
-                        Toast.makeText(getContext(),"El usuario ya está en uso",Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(getContext(),"El correo ya está en uso",Toast.LENGTH_SHORT).show();
+            if (c1.getCount() != 0 || c2.getCount() != 0 || c3.getCount() != 0 || c4.getCount() != 0) {
+                if ((c1.getCount() != 0 && c2.getCount() != 0) || (c3.getCount() != 0 && c4.getCount() != 0)) {
+                    Toast.makeText(getContext(), "El correo y el usuario están en uso", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (c1.getCount() != 0 || c3.getCount() != 0) {
+                        Toast.makeText(getContext(), "El usuario ya está en uso", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "El correo ya está en uso", Toast.LENGTH_SHORT).show();
                     }
                 }
             } else {
 
-                UserStructure userDb = new UserStructure(name,user,password,mail, photo, institution);
+                UserStructure userDb = new UserStructure(name, user, password, mail, photo, institution);
                 Snackbar.make(view, R.string.logupS, Snackbar.LENGTH_SHORT).show();
-                db.insert(StatusContract.TABLE_USER,null,userDb.toContentValues());
+                db.insert(StatusContract.TABLE_USER, null, userDb.toContentValues());
                 Fragment frag = new LoginFragment();
                 getActivity().getSupportFragmentManager().popBackStack();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,frag).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, frag).commit();
             }
         }
 
@@ -112,8 +111,6 @@ public class LogupFragment extends Fragment implements View.OnClickListener {
         this.photoBitmap = photoBitmap;
         userPhoto.setImageBitmap(photoBitmap);
     }
-
-
 
 
 }

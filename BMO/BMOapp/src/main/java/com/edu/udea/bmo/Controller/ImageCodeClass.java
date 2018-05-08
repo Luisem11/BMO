@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Shader;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Base64;
@@ -54,6 +58,22 @@ public class ImageCodeClass {
             pickImageIntent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
             a.startActivityForResult(pickImageIntent, IMAGE_GALLERY_REQUEST);
         }
+    }
+
+    public static Bitmap decodeCircular(String image) {
+        Bitmap bitmap = ImageCodeClass.decodeBase64(image);
+        Bitmap circleBitmap = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+
+        BitmapShader shader = new BitmapShader(bitmap,
+                Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        Paint paint = new Paint();
+        paint.setShader(shader);
+        paint.setAntiAlias(true);
+        Canvas canvas = new Canvas(circleBitmap);
+        canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2, bitmap.getWidth() / 2, paint);
+        return circleBitmap;
+
     }
 
 }

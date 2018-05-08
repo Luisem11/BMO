@@ -10,12 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.edu.udea.bmo.Controller.ImageCodeClass;
-import com.edu.udea.bmo.View.User.MainActivityUser;
-import com.edu.udea.bmo.View.Tutor.MainActivityTutor;
 import com.edu.udea.bmo.Model.DB.DbHelper;
 import com.edu.udea.bmo.Model.DB.StatusContract;
 import com.edu.udea.bmo.R;
 import com.edu.udea.bmo.SplashFragment;
+import com.edu.udea.bmo.View.Tutor.MainActivityTutor;
+import com.edu.udea.bmo.View.User.MainActivityUser;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,52 +41,51 @@ public class LoginActivity extends AppCompatActivity {
             public void run() {
                 DbHelper dbHelper = new DbHelper(getApplicationContext());
                 SQLiteDatabase db = dbHelper.getReadableDatabase();
-                Cursor c = db.rawQuery("select "+ StatusContract.Column_User.MAIL +
-                        ", " + StatusContract.Column_User.NAME +
-                        " from " + StatusContract.TABLE_USER +
-                        " where " + StatusContract.Column_User.SESSION + " = 'ACTIVO' "
+                Cursor c = db.rawQuery("select " + StatusContract.Column_User.MAIL +
+                                ", " + StatusContract.Column_User.NAME +
+                                " from " + StatusContract.TABLE_USER +
+                                " where " + StatusContract.Column_User.SESSION + " = 'ACTIVO' "
                         , null);
 
 
-                if(c.moveToFirst()){
+                if (c.moveToFirst()) {
                     mail = c.getString(0);
                     String name = c.getString(1);
                     Intent other = new Intent(getApplicationContext(), MainActivityUser.class);
                     Bundle bundleP = new Bundle();
-                    bundleP.putString(StatusContract.Column_User.MAIL,mail);
-                    bundleP.putString(StatusContract.Column_User.NAME,name);
+                    bundleP.putString(StatusContract.Column_User.MAIL, mail);
+                    bundleP.putString(StatusContract.Column_User.NAME, name);
                     other.putExtras(bundleP);
                     finish();
                     startActivity(other);
 
 
-                }else{
-                    c = db.rawQuery("SELECT "+ StatusContract.Column_Tutor.MAIL +
-                            ", " + StatusContract.Column_Tutor.NAME +
-                            " FROM " + StatusContract.TABLE_TUTOR +
-                            " WHERE " + StatusContract.Column_Tutor.SESSION + " = 'ACTIVO' "
+                } else {
+                    c = db.rawQuery("SELECT " + StatusContract.Column_Tutor.MAIL +
+                                    ", " + StatusContract.Column_Tutor.NAME +
+                                    " FROM " + StatusContract.TABLE_TUTOR +
+                                    " WHERE " + StatusContract.Column_Tutor.SESSION + " = 'ACTIVO' "
                             , null);
 
 
-                    if(c.moveToFirst()){
+                    if (c.moveToFirst()) {
                         mail = c.getString(0);
                         String name = c.getString(1);
                         Intent other = new Intent(getApplicationContext(), MainActivityTutor.class);
                         Bundle bundleP = new Bundle();
-                        bundleP.putString(StatusContract.Column_User.MAIL,mail);
-                        bundleP.putString(StatusContract.Column_User.NAME,name);
+                        bundleP.putString(StatusContract.Column_User.MAIL, mail);
+                        bundleP.putString(StatusContract.Column_User.NAME, name);
                         other.putExtras(bundleP);
                         finish();
                         startActivity(other);
 
 
-                    }else{
+                    } else {
                         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.fragment_container, new LoginFragment());
                         ft.commit();
 
                     }
-
 
 
                 }
@@ -99,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void photoGallery(View v) {
-        ImageCodeClass.photoGallery(v,this, this);
+        ImageCodeClass.photoGallery(v, this, this);
     }
 
     @Override
@@ -110,7 +109,8 @@ public class LoginActivity extends AppCompatActivity {
             Bundle b = data.getExtras();
 
             Bitmap selectedImage = b.getParcelable("data");
-            LogupFragment frag = (LogupFragment) getSupportFragmentManager().findFragmentByTag("registrarUsuario");
+            LogupFragment frag = (LogupFragment) getSupportFragmentManager()
+                    .findFragmentByTag("registrarUsuario");
             frag.setPhotoBitmap(selectedImage);
 
         }

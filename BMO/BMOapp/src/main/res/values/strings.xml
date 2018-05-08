@@ -35,4 +35,25 @@
     <string name="photoSettingsDescription">Cambiar la foto</string>
     <string name="userSettingsDescription">Cambia el usuario</string>
     <string name="nameSettingsDescription">Cambia el nombre</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="program">Programar</string>
+    <string name="program_tutories">No tienes asesorias programadas</string>
+
+
+    <string-array name="days">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miércoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+        <item>Sábado</item>
+        <item>Domingo</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="institution">Institución Educativa</string>
+    <string name="program_chats">No tienes chats disponibles</string>
+    <string name="complete">Información incompleta</string>
+    <string name="success">Asesoria Programada!</string>
 </resources>

@@ -17,7 +17,6 @@ import com.edu.udea.bmo.Model.DB.StatusContract;
 import com.edu.udea.bmo.R;
 
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -25,6 +24,42 @@ import com.edu.udea.bmo.R;
 public class ConfigFragment extends PreferenceFragment {
 
     DbHelper dbHelper;
+    private Preference.OnPreferenceChangeListener listener = new Preference.OnPreferenceChangeListener() {
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            if (preference instanceof EditTextPreference) {
+                ContentValues changes = new ContentValues();
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+                if (preference.getKey().equals("user") && newValue != "") {
+                    changes.put("user", newValue.toString());
+                    findPreference("user").setTitle(newValue.toString());
+
+                }
+
+                if (preference.getKey().equals("name") && newValue != "") {
+                    changes.put("name", newValue.toString());
+                    findPreference("name").setTitle(newValue.toString());
+                }
+
+                if (preference.getKey().equals("mail") && newValue != "") {
+                    changes.put("mail", newValue.toString());
+                    findPreference("mail").setTitle(newValue.toString());
+                }
+
+                if (preference.getKey().equals("password") && newValue != "") {
+                    changes.put("password", newValue.toString());
+                }
+
+
+                if (changes.size() > 0) {
+                    db.update(StatusContract.TABLE_USER, changes, StatusContract.Column_User.STATE + " = 'ACTIVO'", null);
+                    changes = null;
+                }
+            }
+            return false;
+        }
+    };
 
     public ConfigFragment(DbHelper dbHelper) {
         this.dbHelper = dbHelper;
@@ -62,51 +97,11 @@ public class ConfigFragment extends PreferenceFragment {
 
     }
 
-    private  void updateSettings(Preference preference){
+    private void updateSettings(Preference preference) {
         preference.setOnPreferenceChangeListener(listener);
         listener.onPreferenceChange(preference, PreferenceManager.getDefaultSharedPreferences(
-                preference.getContext()).getString(preference.getKey(),""));
+                preference.getContext()).getString(preference.getKey(), ""));
     }
-
-    private  Preference.OnPreferenceChangeListener listener = new Preference.OnPreferenceChangeListener() {
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object newValue) {
-            if(preference instanceof EditTextPreference){
-                ContentValues changes = new ContentValues();
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-                if(preference.getKey().equals("user") && newValue != ""){
-                    changes.put("user",newValue.toString());
-                    findPreference("user").setTitle(newValue.toString());
-
-                }
-
-                if(preference.getKey().equals("name") && newValue != ""){
-                    changes.put("name",newValue.toString());
-                    findPreference("name").setTitle(newValue.toString());
-                }
-
-                if(preference.getKey().equals("mail") && newValue != ""){
-                    changes.put("mail",newValue.toString());
-                    findPreference("mail").setTitle(newValue.toString());
-                }
-
-                if(preference.getKey().equals("password") && newValue != ""){
-                    changes.put("password",newValue.toString());
-                }
-
-
-
-                if(changes.size()>0) {
-                    db.update(StatusContract.TABLE_USER, changes, StatusContract.Column_User.STATE + " = 'ACTIVO'", null);
-                    changes = null;
-                }
-            }
-            return false;
-        }
-    };
-
-
 
 
 }

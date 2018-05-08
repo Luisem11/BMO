@@ -6,53 +6,135 @@
     tools:context=".View.User.ProfileFragment">
 
     <android.support.v7.widget.CardView
-        android:foreground="?android:attr/selectableItemBackground"
-        android:clickable="true"
+        android:id="@+id/cv_near_tutors"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:id="@+id/cv_near_tutors">
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
+
             <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:id="@+id/photo_profile"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:background="@drawable/ic_account_circle"
-                android:padding="10dp"
-                android:id="@+id/photo_profile"/>
+                android:padding="10dp" />
+
             <TextView
+                android:id="@+id/name_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 android:text="@string/name"
-                android:id="@+id/name_profile"/>
+                android:textStyle="bold" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/lightgray"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:background="@color/lightgray" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="10dp">
+        android:layout_height="match_parent">
 
-
-        <ListView
-            android:id="@+id/tutors_list"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@null"
-            tools:listitem="@layout/list_item_tutor" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp">
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Asesorias programadas:"
+                    android:textColor="?colorPrimary"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/lightgray" />
+
+
+                <TextView
+                    android:id="@+id/nothing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/program_tutories"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+
+                <ListView
+                    android:id="@+id/tutors_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@null"
+                    tools:listitem="@layout/list_item_tutor" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Chats Activos:"
+                    android:textColor="?colorPrimary"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/lightgray" />
+
+                <TextView
+                    android:id="@+id/nothing_chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/program_chats"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <ListView
+                    android:id="@+id/chat_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@null"
+                    tools:listitem="@layout/list_item_tutor" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </LinearLayout>

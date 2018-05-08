@@ -1,8 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.Login.LogupFragment">
 
     <ScrollView
@@ -88,7 +88,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="5dp"
-                    android:hint="@string/name"
+                    android:hint="@string/institution"
                     android:imeOptions="actionNext"
                     android:inputType="textCapWords"
                     android:textSize="20dp" />
@@ -102,12 +102,12 @@
                 android:layout_marginTop="20dp">
 
                 <TextView
-                    android:layout_gravity="left"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginRight="60dp"
                     android:text="@string/photoBitmap"
-                    android:textSize="20dp"
-                    android:layout_marginRight="60dp" />
+                    android:textSize="20dp" />
 
                 <ImageView
                     android:id="@+id/photoUser"
@@ -128,10 +128,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginTop="20dp"
+                android:onClick="onClick"
                 android:text="@string/log_up"
                 android:textAllCaps="false"
-                android:textSize="20dp"
-                android:onClick="onClick" />
+                android:textSize="20dp" />
 
         </LinearLayout>
 
