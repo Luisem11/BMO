@@ -26,9 +26,8 @@
 
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="130dp"
             android:layout_gravity="center_horizontal"
-            android:paddingBottom="40dp"
             android:src="@drawable/ic_launcher_ico" />
 
         <TextView
@@ -36,20 +35,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:text="SEMINARIO DE PROYECTOS"
             android:textColor="@color/graylight"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
         <TextView
             style="@style/Base.TextAppearance.AppCompat.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:text="EN INGENIERÍA I"
             android:textColor="@color/graylight"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -80,7 +79,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Emanuel Castillo Cardona"
                 android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
 
 
             <TextView
@@ -99,7 +98,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Maria Fernanda Esquivel"
                 android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
 
 
             <TextView
@@ -117,7 +116,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Brallan Duban Garzón Guzmán"
                 android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
 
 
             <TextView
@@ -135,7 +134,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Victor Mazo Barrera"
                 android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
 
 
             <TextView
@@ -153,7 +152,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Juan Carlos Ortiz Valbuena"
                 android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
 
 
             <TextView
@@ -171,7 +170,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Jurian Damaris Sepulveda"
                 android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
 
 
             <TextView

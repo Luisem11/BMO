@@ -8,8 +8,8 @@
     <ImageView
         android:id="@+id/LogoImage"
         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_launcher_ico" />
+        android:layout_height="130dp"
+        android:src="@drawable/ic_launcher_ico"/>
 
     <ProgressBar
         android:id="@+id/ProgressBar"
